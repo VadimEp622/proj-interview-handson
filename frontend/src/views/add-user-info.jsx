@@ -12,7 +12,10 @@ export function AddUserInfo() {
     }, [form])
 
     function handleOnSubmit(values) {
-        console.log('values', values)
+        // console.log('values', values)
+        const formValues = { ...values }
+        if (formValues.campaignBudget < 1000) formValues.campaignBudget = ''
+        console.log('formValues', formValues)
         setForm(values)
     }
 

@@ -10,7 +10,7 @@ export function FormUserInfo({ handleOnSubmit, form }) {
         website: "",
         linkedIn: "",
         yearsOfExperience: "",
-        campaignBudget: 1000,
+        campaignBudget: "",
     }
 
     // const { values } = useFormikContext()
@@ -62,17 +62,28 @@ export function FormUserInfo({ handleOnSubmit, form }) {
                                 <Field
                                     type="range"
                                     name="campaignBudget"
-                                    min={1000}
+                                    min={999}
                                     max={500000}
-                                    value={values.campaignBudget}
+                                    value={values.campaignBudget || 1000}
                                 />
-                                <span>{values.campaignBudget} $</span>
+
+                                {
+                                    (!values.campaignBudget || values.campaignBudget < 1000) &&
+                                    <span> none</span>
+                                }
+
+                                {
+                                    values.campaignBudget && values.campaignBudget > 1000 &&
+                                    <span>{values.campaignBudget} $</span>
+                                }
+
                             </section>
                         </section>
                         <button type="submit">Submit</button>
                     </section>
                 </Form>
-            )}
+            )
+            }
         </Formik >
     )
 }
