@@ -5,14 +5,18 @@ import { infoService } from "../services/info.service"
 
 export function AddUserInfo() {
     const [form, setForm] = useState(null)
+    const [isSubmittedBefore, setIsSubmittedBefore] = useState(null)
 
     useEffect(() => {
         if (form) {
             const mailPrms = infoService.getByMail(form.eMail)
                 .then(item => {
                     // console.log('item', item)
-                    if(!item) infoService.save(form)
-                    else console.log('Already Exists')
+                    if (!item) infoService.save(form)
+                    else {
+                        console.log('Already Exists')
+                        setIsSubmittedBefore(true)
+                    }
                 })
 
             // const info = infoService.save(form)
@@ -29,6 +33,15 @@ export function AddUserInfo() {
     }
 
     return (
-        <FormUserInfo handleOnSubmit={handleOnSubmit} form={form} />
+        <section className="add-user-info">
+            {
+                !isSubmittedBefore &&
+                <FormUserInfo handleOnSubmit={handleOnSubmit} form={form} />
+            }
+            {
+                isSubmittedBefore &&
+                <span>Already submitted for this email.</span>
+            }
+        </section>
     )
 }
