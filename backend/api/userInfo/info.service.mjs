@@ -10,9 +10,9 @@ const dataPath = './data/userInfo.json'
 
 export const infoService = {
     // query,
-    getUserInfo,
-    removeUserInfoByEmail,
-    getUserInfoByEmail,
+    // getUserInfo,
+    // removeUserInfoByEmail,
+    // getUserInfoByEmail,
     // getById,
     // getByUsername,
     // remove,
@@ -20,77 +20,67 @@ export const infoService = {
     addUserInfo
 }
 
-async function getUserInfo() {
-    try {
-        const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
-        const data = JSON.parse(jsonData)
-        return data.userInfo
-    } catch (error) {
-        logger.error('Error reading user information:', error);
-        throw new Error('Error reading user info: ' + err.message)
-    }
-}
+// async function getUserInfo() {
+//     try {
+//         const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
+//         const data = JSON.parse(jsonData)
+//         return data.userInfo
+//     } catch (error) {
+//         logger.error('Error reading user information:', error);
+//         throw new Error('Error reading user info: ' + err.message)
+//     }
+// }
 
 async function addUserInfo(newUserInfo) {
     console.log('newUserInfo', newUserInfo)
     try {
-
-        // const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
-
-        const jsonData = fs.readFileSync(dataPath, 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            // console.log('data', data)
-        })
-
+        const jsonData = fs.readFileSync(dataPath, 'utf8')
 
         const data = JSON.parse(jsonData)
 
         data.push(newUserInfo)
 
         fs.writeFileSync(dataPath, JSON.stringify(data))
-        return data.userInfo
+        return data
     } catch (error) {
         logger.error('Error adding user information:', error)
         throw new Error('Error adding user information')
     }
 }
 
-export async function removeUserInfoByEmail(email) {
-    try {
-        const jsonData = await fs.promises.readFile(dataPath, 'utf8')
-        const data = JSON.parse(jsonData)
+// export async function removeUserInfoByEmail(email) {
+//     try {
+//         const jsonData = await fs.promises.readFile(dataPath, 'utf8')
+//         const data = JSON.parse(jsonData)
 
-        data.userInfo = data.userInfo.filter(user => user.eMail !== email)
+//         data.userInfo = data.userInfo.filter(user => user.eMail !== email)
 
-        await fs.promises.writeFile(dataPath, JSON.stringify(data))
+//         await fs.promises.writeFile(dataPath, JSON.stringify(data))
 
-        return data.userInfo
-    } catch (error) {
-        logger.error('Error removing user information:', error)
-        throw new Error('Error removing user information')
-    }
-}
+//         return data.userInfo
+//     } catch (error) {
+//         logger.error('Error removing user information:', error)
+//         throw new Error('Error removing user information')
+//     }
+// }
 
-export async function getUserInfoByEmail(email) {
-    try {
-        const jsonData = await fs.promises.readFile(dataPath, 'utf8')
-        const data = JSON.parse(jsonData)
+// export async function getUserInfoByEmail(email) {
+//     try {
+//         const jsonData = await fs.promises.readFile(dataPath, 'utf8')
+//         const data = JSON.parse(jsonData)
 
-        const userInfo = data.userInfo.find(user => user.eMail === email)
+//         const userInfo = data.userInfo.find(user => user.eMail === email)
 
-        if (!userInfo) {
-            throw new Error('User not found')
-        }
+//         if (!userInfo) {
+//             throw new Error('User not found')
+//         }
 
-        return userInfo
-    } catch (error) {
-        logger.error('Error getting user information by email:', error)
-        throw new Error('Error getting user information by email')
-    }
-}
+//         return userInfo
+//     } catch (error) {
+//         logger.error('Error getting user information by email:', error)
+//         throw new Error('Error getting user information by email')
+//     }
+// }
 
 
 // async function getById(userId) {
