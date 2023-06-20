@@ -6,7 +6,7 @@
 
 
 // ************** Basics **************
-// @import "basics/base";
+@import "basics/base";
 // @import "basics/helpers";
 // @import "basics/layout";
 // @import "basics/links";
@@ -17,7 +17,8 @@
 // Reuseable 
 
 // header 
-// @import "cmps/app-header";
+@import "cmps/app-header";
+
 
 
 // ************** Pages **************

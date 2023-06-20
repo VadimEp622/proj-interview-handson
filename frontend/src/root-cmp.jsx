@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router'
 
 
 import { Header } from "./cmps/header"
+import { HomePage } from './views/home-page'
+import { AddUserInfo } from './views/add-user-info'
 
 
 export function RootCmp() {
@@ -10,7 +12,10 @@ export function RootCmp() {
         <section className="app">
             <Header />
             <main className="app-main">
-                hello from main
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/addUserInfo" element={<AddUserInfo />} />
+                </Routes>
             </main>
         </section>
     )
