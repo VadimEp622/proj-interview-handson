@@ -11,16 +11,12 @@ export function AddUserInfo() {
         if (form) {
             const mailPrms = infoService.getByMail(form.eMail)
                 .then(item => {
-                    // console.log('item', item)
                     if (!item) infoService.save(form)
                     else {
                         console.log('Already Exists')
                         setIsSubmittedBefore(true)
                     }
                 })
-
-            // const info = infoService.save(form)
-            // console.log('info', info)
         }
     }, [form])
 

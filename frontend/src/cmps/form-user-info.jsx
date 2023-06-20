@@ -1,6 +1,6 @@
-import { Formik, Field, Form, useFormikContext } from "formik"
+import { Formik, Field, Form } from "formik"
 
-export function FormUserInfo({ handleOnSubmit, form }) {
+export function FormUserInfo({ handleOnSubmit }) {
 
 
     const initialValues = {
@@ -13,7 +13,6 @@ export function FormUserInfo({ handleOnSubmit, form }) {
         campaignBudget: "",
     }
 
-    // const { values } = useFormikContext()
     return (
         <Formik
             initialValues={initialValues}
