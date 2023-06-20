@@ -1,0 +1,24 @@
+// ************** Setup **************
+@import "setup/variables";
+// @import "setup/typography";
+// @import "setup/functions";
+// @import "setup/mixins";
+
+
+// ************** Basics **************
+@import "basics/base";
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/links";
+@import "basics/forms";
+
+
+// ************** Components **************
+// Reuseable 
+
+// header 
+@import "cmps/app-header";
+
+
+// ************** Pages **************
+@import "pages/home-page";
