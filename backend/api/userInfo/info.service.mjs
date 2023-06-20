@@ -42,14 +42,11 @@ async function addUserInfo(newUserInfo) {
                 console.error(err);
                 return;
             }
-            console.log('data1', data);
-            // return data
-        });
+            // console.log('data', data)
+        })
 
-        console.log('jsonData', jsonData)
 
         const data = JSON.parse(jsonData)
-        console.log('data2', data)
 
         data.push(newUserInfo)
 
