@@ -17,6 +17,6 @@ export function AddUserInfo() {
     }
 
     return (
-        <FormUserInfo handleOnSubmit={handleOnSubmit} />
+        <FormUserInfo handleOnSubmit={handleOnSubmit} form={form} />
     )
 }
