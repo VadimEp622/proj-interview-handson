@@ -9,27 +9,31 @@ const dataPath = './data/userInfo.json'
 // const dataPath = '../../data/userinfo.json'
 
 export const infoService = {
+    getUserInfoByMail,
+    addUserInfo
     // query,
-    // getUserInfo,
+    // getUserInfos,
     // removeUserInfoByEmail,
     // getUserInfoByEmail,
     // getById,
     // getByUsername,
     // remove,
     // update,
-    addUserInfo
 }
 
-// async function getUserInfo() {
-//     try {
-//         const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
-//         const data = JSON.parse(jsonData)
-//         return data.userInfo
-//     } catch (error) {
-//         logger.error('Error reading user information:', error);
-//         throw new Error('Error reading user info: ' + err.message)
-//     }
-// }
+async function getUserInfoByMail(newUserInfoMail) {
+    try {
+        // const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
+        const jsonData = fs.readFileSync(dataPath, 'utf8')
+        const data = JSON.parse(jsonData)
+        const userInfo = data.find(item => item.eMail === newUserInfoMail)
+        console.log('userInfo', userInfo)
+        return userInfo
+    } catch (error) {
+        logger.error('Error reading user information:', error);
+        throw new Error('Error reading user info: ' + err.message)
+    }
+}
 
 async function addUserInfo(newUserInfo) {
     console.log('newUserInfo', newUserInfo)
@@ -37,6 +41,7 @@ async function addUserInfo(newUserInfo) {
         const jsonData = fs.readFileSync(dataPath, 'utf8')
 
         const data = JSON.parse(jsonData)
+        console.log('data', data)
 
         data.push(newUserInfo)
 
@@ -47,6 +52,20 @@ async function addUserInfo(newUserInfo) {
         throw new Error('Error adding user information')
     }
 }
+
+
+// async function getUserInfos() {
+//     try {
+//         // const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
+//         const jsonData = fs.readFileSync(dataPath, 'utf8')
+//         const data = JSON.parse(jsonData)
+//         return data.userInfo
+//     } catch (error) {
+//         logger.error('Error reading user information:', error);
+//         throw new Error('Error reading user info: ' + err.message)
+//     }
+// }
+
 
 // export async function removeUserInfoByEmail(email) {
 //     try {

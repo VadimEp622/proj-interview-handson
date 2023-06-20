@@ -4,7 +4,7 @@ const STORAGE_KEY = 'info'
 
 export const infoService = {
     query,
-    getById,
+    getByMail,
     remove,
     save
 }
@@ -13,12 +13,12 @@ async function query() {
     return httpService.get(STORAGE_KEY)
 }
 
-async function getById(Id) {
-    return httpService.get(`${STORAGE_KEY}/${Id}`)
+async function getByMail(eMail) {
+    return httpService.get(`${STORAGE_KEY}/${eMail}`)
 }
 
-async function remove(Id) {
-    return httpService.delete(`${STORAGE_KEY}/${Id}`)
+async function remove(eMail) {
+    return httpService.delete(`${STORAGE_KEY}/${eMail}`)
 }
 
 async function save(info) {

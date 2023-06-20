@@ -8,7 +8,15 @@ export function AddUserInfo() {
 
     useEffect(() => {
         if (form) {
-            infoService.save(form)
+            const mailPrms = infoService.getByMail(form.eMail)
+                .then(item => {
+                    // console.log('item', item)
+                    if(!item) infoService.save(form)
+                    else console.log('Already Exists')
+                })
+
+            // const info = infoService.save(form)
+            // console.log('info', info)
         }
     }, [form])
 
