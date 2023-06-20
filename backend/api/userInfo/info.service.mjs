@@ -4,6 +4,10 @@ import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 import fs from 'fs'
 const dataPath = './data/userInfo.json'
+
+// import dataPath from '../../data/userinfo.json'
+// const dataPath = '../../data/userinfo.json'
+
 export const infoService = {
     // query,
     getUserInfo,
@@ -28,11 +32,28 @@ async function getUserInfo() {
 }
 
 async function addUserInfo(newUserInfo) {
+    console.log('newUserInfo', newUserInfo)
     try {
-        const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
+
+        // const jsonData = await fs.promises.readFileSync(dataPath, 'utf8')
+
+        const jsonData = fs.readFileSync(dataPath, 'utf8', (err, data) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log('data1', data);
+            // return data
+        });
+
+        console.log('jsonData', jsonData)
+
         const data = JSON.parse(jsonData)
-        data.userInfo.push(newUserInfo)
-        await fs.promises.writeFile(dataPath, JSON.stringify(data))
+        console.log('data2', data)
+
+        data.push(newUserInfo)
+
+        fs.writeFileSync(dataPath, JSON.stringify(data))
         return data.userInfo
     } catch (error) {
         logger.error('Error adding user information:', error)
