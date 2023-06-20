@@ -1,8 +1,9 @@
-export function AddUserInfo(){
+import { FormUserInfo } from "../cmps/form-user-info"
 
-    return(
-        <section>
-            <h1>Hello from AddUserInfo</h1>
-        </section>
+
+export function AddUserInfo() {
+
+    return (
+        <FormUserInfo />
     )
 }
