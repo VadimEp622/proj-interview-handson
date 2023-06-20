@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { FormUserInfo } from "../cmps/form-user-info"
+import { infoService } from "../services/info.service"
 
 
 export function AddUserInfo() {
@@ -7,7 +8,7 @@ export function AddUserInfo() {
 
     useEffect(() => {
         if (form) {
-            // addForm()
+            infoService.save(form)
         }
     }, [form])
 

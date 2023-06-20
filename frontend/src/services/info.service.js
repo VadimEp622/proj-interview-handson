@@ -22,6 +22,7 @@ async function remove(Id) {
 }
 
 async function save(info) {
-    savedInfo = await httpService.post(`${STORAGE_KEY}`, info)
+    console.log(info)
+    const savedInfo = await httpService.post(`${STORAGE_KEY}`, info)
     return savedInfo
 }
