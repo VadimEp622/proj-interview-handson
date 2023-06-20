@@ -40,7 +40,7 @@ export function FormUserInfo() {
                     </select>
                 </section>
                 <section>
-                    <label>"How many years of experience do you
+                    <label>How many years of experience do you
                         have with Facebook Marketing?</label>
                     <input type="range" min={1000} max={500000} />
                 </section>
