@@ -30,8 +30,8 @@ import { setupSocketAPI } from './services/socket.service.mjs'
 import { infoRoutes } from './api/userInfo/info.routes.mjs'
 
 // routes
-import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
-app.all('*', setupAsyncLocalStorage)
+// import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
+// app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/info', infoRoutes)
 setupSocketAPI(server)
